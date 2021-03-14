@@ -11,6 +11,26 @@ yarn dev
 
 Open up `localhost:3000` in a browser.
 
+### Configuration
+
+Our `nuxt.config.js` file contains `target` set to `static` for deployment.
+
+```javascript
+// nuxt.config.js
+
+export default {
+  target: 'static'
+}
+```
+
+Our `netlify.toml` file sets the publish directory to `dist` and the build command to `nuxt generate`.
+
+```toml
+[build]
+  publish = "dist/"
+  command = "nuxt generate"
+```
+
 ### Home page
 
 The home page include an `<h1>` for the title of the page and links to some of your social media accounts.
