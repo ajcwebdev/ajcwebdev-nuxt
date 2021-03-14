@@ -40,73 +40,42 @@ The home page include an `<h1>` for the title of the page and links to some of y
 
 <template>
   <div class="container">
+    <header>
+      <h1>ajcwebdev</h1>
+    </header>
 
-    <div>
-      <h1 class="title">
-        ajcwebdev
-      </h1>
+    <p>This is the home page</p>
 
-      <div class="links">
-        <a
-          href="https://dev.to/ajcwebdev"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Blog
-        </a>
-        <a
-          href="https://github.com/ajcwebdev"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-
+    <footer>
+      <a
+        href="https://dev.to/ajcwebdev"
+        target="_blank"
+      >
+        Blog
+      </a>
+      <a
+        href="https://github.com/ajcwebdev"
+        target="_blank"
+      >
+        GitHub
+      </a>
+    </footer>
   </div>
 </template>
 
 <style>
   .container {
     margin: 0 auto;
-    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
   }
-  
-  .title {
-    font-family:
-      'Quicksand',
-      'Source Sans Pro',
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      'Helvetica Neue',
-      Arial,
-      sans-serif;
-    display: block;
-    font-weight: 300;
-    font-size: 100px;
-    color: #35495e;
-    letter-spacing: 1px;
-  }
-  
-  .links {
-    padding-top: 15px;
-  }
-
-  a {
-    margin: 10%;
-    font-size: 1.5rem;
-  }
 </style>
 ```
 
-![03-](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ky4kczhxfn2blcoe1su8.png)
+![03-home-page-with-css](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gwfbu5emfia1nf6hinxn.png)
 
 ### About page
 
@@ -117,52 +86,20 @@ The component includes an `<h1>` tag for the title and a `<p>` tag containing a 
 
 <template>
   <div class="container">
-
-    <div>
-      <h1 class="title">
-        About
-      </h1>
-
-      <p class="body">
-        This page tells you about stuff
-      </p>
-    </div>
-
+    <p>This page tells you about stuff</p>
   </div>
 </template>
 
 <style>
   .container {
     margin: 0 auto;
-    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
   }
-  
-  .title {
-    font-family:
-      'Quicksand',
-      'Source Sans Pro',
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      'Helvetica Neue',
-      Arial,
-      sans-serif;
-    display: block;
-    font-weight: 300;
-    font-size: 100px;
-    color: #35495e;
-    letter-spacing: 1px;
-  }
-
-  .body {
-    font-size: 1.5rem;
-  }
 </style>
 ```
 
-![05-](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6zrtpyb0rikfibss4l5z.png)
+![05-about-page-with-css](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cmuyi1ca27b450pa0c7r.png)
