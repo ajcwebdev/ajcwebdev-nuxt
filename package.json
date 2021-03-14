@@ -1,0 +1,15 @@
+{
+  "name": "ajcwebdev-nuxt",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "nuxt": "^2.15.3"
+  }
+}
