@@ -2,14 +2,6 @@
 
 NuxtJS is a Vue meta-framework created by [Sébastien Chopin in October 2016](https://github.com/nuxt/nuxt.js/commit/0072ed31da6ce39d21046e05898f956cff190390). It is a progressive framework designed for creating modern web applications. It is based on official Vue libraries including Vue Core, Vue Router, and Vuex.
 
-## Installation
-
-To start we will create a directory, initialize a `package.json` file.
-
-```bash
-mkdir ajcwebdev-nuxt && cd ajcwebdev-nuxt && yarn init -y
-```
-
 ## Start development server
 
 ```bash
@@ -19,7 +11,7 @@ yarn dev
 
 Open up `localhost:3000` in a browser.
 
-### pages/index.vue
+### Home page
 
 The home page include an `<h1>` for the title of the page and links to some of your social media accounts.
 
@@ -96,7 +88,7 @@ The home page include an `<h1>` for the title of the page and links to some of y
 
 ![03-](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ky4kczhxfn2blcoe1su8.png)
 
-### pages/about.vue
+### About page
 
 The component includes an `<h1>` tag for the title and a `<p>` tag containing a brief description of the page.
 
