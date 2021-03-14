@@ -1,4 +1,4 @@
-# a first look at nuxtJS - part 1
+# a first look at nuxtJS: part 1 - setup, pages
 
 NuxtJS is a Vue meta-framework created by [Sébastien Chopin in October 2016](https://github.com/nuxt/nuxt.js/commit/0072ed31da6ce39d21046e05898f956cff190390). It is a progressive framework designed for creating modern web applications. It is based on official Vue libraries including Vue Core, Vue Router, and Vuex.
 
