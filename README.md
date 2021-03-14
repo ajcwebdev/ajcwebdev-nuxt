@@ -22,15 +22,46 @@ export default {
 }
 ```
 
-### Home page
+### Layout
 
 ```html
-// pages/index.vue
+// layouts/default.vue
 
 <template>
   <div class="container">
-    <p>This is the home page</p>
-    <Mountains />
+    <header>
+      <h1>ajcwebdev</h1>
+
+      <nav>
+        <ul>
+          <li>
+            <NuxtLink to="/">Home</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/about">About</NuxtLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <Nuxt />
+    </main>
+
+    <footer>
+      <a
+        href="https://dev.to/ajcwebdev"
+        target="_blank"
+      >
+        Blog
+      </a>
+      <a
+        href="https://github.com/ajcwebdev"
+        target="_blank"
+      >
+        GitHub
+      </a>
+    </footer>
   </div>
 </template>
 
@@ -45,8 +76,6 @@ export default {
   }
 </style>
 ```
-
-![03-home-page-with-css](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gwfbu5emfia1nf6hinxn.png)
 
 ### Mountains component
 
@@ -94,6 +123,30 @@ export default {
     }
   }
 </script>
+```
+
+### Home page
+
+```html
+// pages/index.vue
+
+<template>
+  <div class="container">
+    <p>This is the home page</p>
+    <Mountains />
+  </div>
+</template>
+
+<style>
+  .container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+</style>
 ```
 
 ![05-](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x56kcexozzt37ohbbry7.png)
