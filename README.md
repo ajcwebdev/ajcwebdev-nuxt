@@ -1,4 +1,4 @@
-# a first look at nuxtJS: part 2 - layout, components, data fetching
+# a first look at nuxtJS: part 3 - route parameters, dynamic pages
 
 ## Start development server
 
@@ -11,142 +11,157 @@ Open up `localhost:3000` in a browser.
 
 ### Configuration
 
-Set `components` to `true` in `nuxt.config.js`
+Add `@nuxtjs/axios` to `modules` in config file
 
 ```javascript
 // nuxt.config.js
 
 export default {
   target: 'static',
-  components: true
+  components: true,
+  modules: [
+    '@nuxtjs/axios',
+  ]
 }
 ```
 
-### Layout
+### Joke component
 
 ```html
-// layouts/default.vue
+// components/Joke.vue
 
 <template>
-  <div class="container">
-    <header>
-      <h1>ajcwebdev</h1>
-
-      <nav>
-        <ul>
-          <li>
-            <NuxtLink to="/">Home</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/about">About</NuxtLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <Nuxt />
-    </main>
-
-    <footer>
-      <a
-        href="https://dev.to/ajcwebdev"
-        target="_blank"
-      >
-        Blog
-      </a>
-      <a
-        href="https://github.com/ajcwebdev"
-        target="_blank"
-      >
-        GitHub
-      </a>
-    </footer>
-  </div>
+  <NuxtLink :to="'jokes/' + id">
+    <div class="joke">
+      <p>{{ joke }}</p>
+    </div>
+  </NuxtLink>
 </template>
 
+<script>
+export default {
+  name: "Joke",
+  props: [
+    "joke",
+    "id"
+  ]
+}
+</script>
+
 <style>
-  .container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+.joke {
+  padding: .75rem;
+  border: 1px solid black;
+  border-radius: .5rem;
+  margin: .75rem 0;
+  font-size: 1.25rem;
+}
 </style>
 ```
 
-### Mountains component
+### Jokes page
 
 ```html
-// components/Mountains.vue
+// pages/Jokes/index.vue
 
 <template>
-  <div class="container">
-    <h2>Mountains</h2>
+  <div>
+    <h2>Jokes</h2>
 
-    <p v-if="$fetchState.pending">
-      Almost there...
-    </p>
-
-    <p v-else-if="$fetchState.error">
-      Error
-    </p>
-
-    <div v-else>
-      <ul>
-        <li
-            v-for="mountain of mountains"
-            v-bind:key="mountain.items"
-          >
-          {{ mountain.title }}
-        </li>
-      </ul>
-    </div>
+    <Joke
+      v-for="joke in jokes"
+      :key="joke.id"
+      :id="joke.id"
+      :joke="joke.joke"
+    />
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        mountains: []
+import axios from "axios"
+
+export default {
+  data() {
+    return {
+      jokes: []
+    }
+  },
+
+  async created() {
+    const config = {
+      headers: {
+        Accept: "application/json"
       }
-    },
-    async fetch() {
-      this.mountains = await fetch(
-        'https://api.nuxtjs.dev/mountains'
+    }
+
+    try {
+      const res = await axios.get(
+        "https://icanhazdadjoke.com/search",
+        config
       )
-      .then(res => res.json())
-      console.log(this.mountains)
+
+      this.jokes = res.data.results
+      console.log(this.jokes)
+    } catch (err) {
+      console.log(err)
     }
   }
+}
 </script>
 ```
 
-### Home page
+![05-link-to-dynamic-page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j9be0jc04oe8zc4fgfb7.png)
+
+### Dynamic pages
 
 ```html
-// pages/index.vue
+// pages/Jokes/_id/index.vue
 
 <template>
-  <div class="container">
-    <p>This is the home page</p>
-    <Mountains />
+  <div>
+    <NuxtLink to="/jokes">
+      Back To Jokes
+    </NuxtLink>
+    
+    <h2>
+      {{ joke }}
+    </h2>
+
+    <small>
+      ID: {{ $route.params.id }}
+    </small>
   </div>
 </template>
 
-<style>
-  .container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+<script>
+import axios from "axios"
+
+export default {
+  data() {
+    return {
+      joke: {}
+    }
+  },
+  async created() {
+    const config = {
+      headers: {
+        Accept: "application/json"
+      }
+    }
+
+    try {
+      const res = await axios.get(
+        `https://icanhazdadjoke.com/j/${this.$route.params.id}`,
+        config
+      )
+
+      this.joke = res.data.joke
+    } catch (err) {
+      console.log(err)
+    }
   }
-</style>
+}
+</script>
 ```
 
-![05-](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x56kcexozzt37ohbbry7.png)
+![04-dynamic-page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bgko6u6r77kj4txkurvy.png)
