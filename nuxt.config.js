@@ -1,4 +1,7 @@
 export default {
   target: 'static',
-  components: true
+  components: true,
+  modules: [
+    '@nuxtjs/axios',
+  ]
 }
